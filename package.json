@@ -1,0 +1,19 @@
+{
+  "name": "hotel-management-system",
+  "private": true,
+  "packageManager": "pnpm@12.23.0",
+  "engines": {
+    "node": ">=26 <27"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "openapi-zod-client": "catalog:",
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.13"
+  }
+}

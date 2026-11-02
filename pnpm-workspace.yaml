@@ -1,0 +1,15 @@
+packages:
+  - apps/*
+
+# Refuse installs on a Node version outside the root package's `engines` (ADR-20).
+engineStrict: true
+
+# Versions shared by the apps; a package references one as "catalog:" (ADR-12).
+catalog:
+  '@tanstack/react-query': ^5.108.4
+  next: ^16.4.6
+  openapi-zod-client: ^1.18.3
+  react: ^19.3.1
+  react-dom: ^19.3.1
+  typescript: ^6.0.3
+  zod: ^4.6.7

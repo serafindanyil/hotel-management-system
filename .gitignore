@@ -1,0 +1,21 @@
+# Environment: only the example is committed
+.env
+.env.*
+!.env.example
+
+# Credentials downloaded from Firebase or elsewhere (C-12)
+*-firebase-adminsdk-*.json
+serviceAccount*.json
+*.pem
+*.key
+
+# Dependencies and build output
+node_modules/
+.turbo/
+dist/
+.next/
+coverage/
+*.tsbuildinfo
+
+# OS files
+.DS_Store
