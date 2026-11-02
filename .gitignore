@@ -3,7 +3,7 @@
 .env.*
 !.env.example
 
-# Credentials downloaded from Firebase or elsewhere (C-12)
+# Credentials downloaded from Firebase or elsewhere
 *-firebase-adminsdk-*.json
 serviceAccount*.json
 *.pem
