@@ -22,7 +22,7 @@ const bootstrap = async (): Promise<void> => {
     origin: parseCorsOrigins(config.get('CORS_ORIGINS', { infer: true })),
     allowedHeaders: CORS_ALLOWED_HEADERS,
   });
-  app.setGlobalPrefix(API_PREFIX);
+  app.setGlobalPrefix(API_PREFIX, { exclude: ['health'] });
   await app.listen(config.get('PORT', { infer: true }) ?? DEFAULT_PORT);
 };
 
