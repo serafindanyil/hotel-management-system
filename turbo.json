@@ -1,18 +1,25 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
+    "prisma:generate": {
+      "inputs": ["prisma/**", "prisma.config.ts", "package.json"],
+      "outputs": ["src/generated/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "prisma:generate"],
       "env": ["NEXT_PUBLIC_*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "dev": {
+      "dependsOn": ["prisma:generate"],
       "cache": false,
       "persistent": true
     },
     "typecheck": {
-      "dependsOn": ["^typecheck"]
+      "dependsOn": ["^typecheck", "prisma:generate"]
     },
-    "lint": {}
+    "lint": {
+      "dependsOn": ["prisma:generate"]
+    }
   }
 }

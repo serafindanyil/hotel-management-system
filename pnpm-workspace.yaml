@@ -13,3 +13,8 @@ catalog:
   react-dom: ^19.3.1
   typescript: ^6.0.3
   zod: ^4.6.7
+
+# Dependencies allowed to run install scripts; every other build script stays blocked.
+allowBuilds:
+  '@prisma/engines': true
+  prisma: true

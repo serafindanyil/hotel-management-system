@@ -20,5 +20,5 @@
     "strictPropertyInitialization": false,
     "types": ["node"]
   },
-  "include": ["src"]
+  "include": ["src", "prisma.config.ts"]
 }
