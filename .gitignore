@@ -18,6 +18,7 @@ coverage/
 *.tsbuildinfo
 next-env.d.ts
 apps/api/src/generated/
+apps/api/openapi.json.tmp
 
 # OS files
 .DS_Store

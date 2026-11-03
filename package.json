@@ -9,7 +9,8 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "api:sync": "turbo run openapi:export --filter=api && for app in web-guest web-admin; do openapi-zod-client apps/api/openapi.json -t apps/api/openapi/client.hbs -p .prettierrc.json --export-schemas --additional-props-default-value false -o apps/$app/src/shared/types/generated-api.ts || exit 1; done"
   },
   "devDependencies": {
     "openapi-zod-client": "catalog:",

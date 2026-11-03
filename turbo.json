@@ -10,6 +10,10 @@
       "env": ["NEXT_PUBLIC_*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "openapi:export": {
+      "dependsOn": ["prisma:generate", "build"],
+      "cache": false
+    },
     "dev": {
       "dependsOn": ["prisma:generate"],
       "cache": false,

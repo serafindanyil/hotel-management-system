@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nest build",
+    "openapi:export": "node dist/openapi-export.js",
     "dev": "prisma generate && dotenv -e ../../.env -- nest start --watch",
     "prisma:generate": "prisma generate",
     "typecheck": "tsc --noEmit",
