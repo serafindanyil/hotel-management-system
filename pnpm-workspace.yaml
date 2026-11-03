@@ -18,3 +18,5 @@ catalog:
 allowBuilds:
   '@prisma/engines': true
   prisma: true
+  # Usage telemetry pulled in by swagger-ui-dist; never run it.
+  '@scarf/scarf': false
