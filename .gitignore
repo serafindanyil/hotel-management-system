@@ -18,6 +18,8 @@ coverage/
 *.tsbuildinfo
 next-env.d.ts
 apps/api/src/generated/
+# OpenAPI document, rebuilt by pnpm api:sync from the API's controllers and DTOs
+apps/api/openapi.json
 apps/api/openapi.json.tmp
 
 # OS files

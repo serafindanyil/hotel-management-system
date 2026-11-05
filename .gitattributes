@@ -1,6 +1,5 @@
 * text=auto eol=lf
 
 # Generated files; never edited by hand
-apps/api/openapi.json linguist-generated=true
 apps/*/src/shared/types/generated-api.ts linguist-generated=true
 pnpm-lock.yaml linguist-generated=true
