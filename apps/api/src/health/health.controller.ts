@@ -2,7 +2,7 @@ import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { ApiOkResponse, ApiServiceUnavailableResponse } from '@nestjs/swagger';
 
 import { DatabasePing } from './database-ping.js';
-import { HealthResponse } from './health-response.js';
+import { HealthResponse } from './health.response.js';
 
 type StatusSetter = { status(code: number): unknown };
 

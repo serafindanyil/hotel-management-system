@@ -1,7 +1,7 @@
 import type { ArgumentsHost, ExceptionFilter } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import type { ErrorCode } from '../../shared/error-code.js';
-import type { ErrorResponse } from './error-response.js';
+import type { ErrorResponse } from './error.response.js';
 
 import { Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
 
