@@ -7,11 +7,81 @@ import { z } from 'zod';
 import { callEndpoint } from '@/shared/api/http';
 import { queryKeys } from '@/shared/api/query-keys';
 
+export const Role = z.enum(['GUEST', 'MANAGER']);
+export type Role = z.infer<typeof Role>;
+
+export const UserResponse = z.object({
+  id: z.string().uuid(),
+  role: Role,
+  email: z.string().nullable(),
+  displayName: z.string().nullable(),
+});
+export type UserResponse = z.infer<typeof UserResponse>;
+
+export const ErrorResponse = z.object({
+  code: z.enum([
+    'VALIDATION_FAILED',
+    'UNAUTHENTICATED',
+    'FORBIDDEN',
+    'NOT_FOUND',
+    'CONFLICT',
+    'ROOM_UNAVAILABLE',
+    'INVALID_BOOKING_STATE',
+    'RULE_VIOLATED',
+    'INTERNAL_ERROR',
+    'UPSTREAM_UNAVAILABLE',
+  ]),
+  message: z.string(),
+});
+export type ErrorResponse = z.infer<typeof ErrorResponse>;
+
+export const AdminPingStatus = z.literal('ok');
+export type AdminPingStatus = z.infer<typeof AdminPingStatus>;
+
+export const AdminPingResponse = z.object({ status: AdminPingStatus });
+export type AdminPingResponse = z.infer<typeof AdminPingResponse>;
+
 export const HealthStatus = z.enum(['ok', 'unavailable']);
 export type HealthStatus = z.infer<typeof HealthStatus>;
 
 export const HealthResponse = z.object({ status: HealthStatus });
 export type HealthResponse = z.infer<typeof HealthResponse>;
+
+const adminPingCheckEndpoint = {
+  method: 'get',
+  path: '/api/v1/admin/ping',
+  queryParams: [],
+  input: z.object({}),
+  response: AdminPingResponse,
+} satisfies Endpoint;
+
+export const adminPingCheck = (...args: EndpointArgs<typeof adminPingCheckEndpoint>) =>
+  callEndpoint(adminPingCheckEndpoint, ...args);
+
+export const adminPingCheckQueryOptions = (
+  ...[input]: EndpointInputArgs<typeof adminPingCheckEndpoint>
+) =>
+  queryOptions({
+    queryKey: queryKeys.endpoint('adminPingCheck', input),
+    queryFn: ({ signal }) => callEndpoint(adminPingCheckEndpoint, input, { signal }),
+  });
+
+const meSyncEndpoint = {
+  method: 'post',
+  path: '/api/v1/me',
+  queryParams: [],
+  input: z.object({}),
+  response: UserResponse,
+} satisfies Endpoint;
+
+export const meSync = (...args: EndpointArgs<typeof meSyncEndpoint>) =>
+  callEndpoint(meSyncEndpoint, ...args);
+
+export const meSyncMutationOptions = () =>
+  mutationOptions({
+    mutationFn: (input: EndpointInput<typeof meSyncEndpoint>) =>
+      callEndpoint(meSyncEndpoint, input),
+  });
 
 const healthCheckEndpoint = {
   method: 'get',
