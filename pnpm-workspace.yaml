@@ -20,3 +20,7 @@ allowBuilds:
   prisma: true
   # Usage telemetry pulled in by swagger-ui-dist; never run it.
   '@scarf/scarf': false
+  # Bakes a FIREBASE_WEBAPP_CONFIG default into the browser SDK; the API never sets it.
+  '@firebase/util': false
+  # Prints a version-scheme warning only.
+  protobufjs: false
