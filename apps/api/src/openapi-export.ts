@@ -12,7 +12,7 @@ const PLACEHOLDER_ENVIRONMENT: Record<string, string> = {
   DATABASE_URL: 'postgresql://openapi-export@localhost:5432/openapi-export',
   FIREBASE_PROJECT_ID: 'openapi-export',
   FIREBASE_CLIENT_EMAIL: 'openapi-export@example.invalid',
-  FIREBASE_PRIVATE_KEY: 'openapi-export',
+  FIREBASE_PRIVATE_KEY: `-----BEGIN PRIVATE KEY-----\\n${'A'.repeat(64)}\\n-----END PRIVATE KEY-----\\n`,
   CORS_ORIGINS: 'http://localhost',
 };
 
@@ -29,7 +29,7 @@ const fillMissingEnvironment = (): void => {
 // Preview mode resolves the module graph without instantiating providers, so nothing connects.
 const createPreviewApp = async (): Promise<INestApplication> => {
   const { AppModule } = await import('./app.module.js');
-  const app = await NestFactory.create(AppModule, { preview: true, logger: false });
+  const app = await NestFactory.create(AppModule, { preview: true, logger: ['error'] });
   applyApiPrefix(app);
   return app;
 };
